@@ -70,43 +70,43 @@ app.get('/api/v1/assets/:id', async (req, res) => {
 app.post('/api/v1/upload', uploadAsset.single('product'), async (req, res) => {
     if (!req.file) return res.status(400).json({ success: 0, message: 'File not uploaded' });
     const asset = await saveAssetFromFile(req.file);
-    return res.json({ success: 1, image_url: `/api/v1/assets/${asset._id}` });
+    return res.json({ success: 1, image_url: `https://api.praveenproperties.com/api/v1/assets/${asset._id}` });
 });
 
 app.post('/api/v1/upload1', uploadAsset.single('product1'), async (req, res) => {
     if (!req.file) return res.status(400).json({ success: 0, message: 'File not uploaded' });
     const asset = await saveAssetFromFile(req.file);
-    return res.json({ success: 1, image_url: `/api/v1/assets/${asset._id}` });
+    return res.json({ success: 1, image_url: `https://api.praveenproperties.com/api/v1/assets/${asset._id}` });
 });
 
 app.post('/api/v1/upload3', uploadAsset.single('product2'), async (req, res) => {
     if (!req.file) return res.status(400).json({ success: 0, message: 'File not uploaded' });
     const asset = await saveAssetFromFile(req.file);
-    return res.json({ success: 1, image_url: `/api/v1/assets/${asset._id}` });
+    return res.json({ success: 1, image_url: `https://api.praveenproperties.com/api/v1/assets/${asset._id}` });
 });
 
 app.post('/api/v1/upload4', uploadAsset.single('product3'), async (req, res) => {
     if (!req.file) return res.status(400).json({ success: 0, message: 'File not uploaded' });
     const asset = await saveAssetFromFile(req.file);
-    return res.json({ success: 1, image_url: `/api/v1/assets/${asset._id}` });
+    return res.json({ success: 1, image_url: `https://api.praveenproperties.com/api/v1/assets/${asset._id}` });
 });
 
 app.post('/api/v1/uploadschool', uploadAsset.single('school'), async (req, res) => {
     if (!req.file) return res.status(400).json({ success: 0, message: 'File not uploaded' });
     const asset = await saveAssetFromFile(req.file);
-    return res.json({ success: 1, image_url: `/api/v1/assets/${asset._id}` });
+    return res.json({ success: 1, image_url: `https://api.praveenproperties.com/api/v1/assets/${asset._id}` });
 });
 
 app.post('/api/v1/uploadcollege', uploadAsset.single('college'), async (req, res) => {
     if (!req.file) return res.status(400).json({ success: 0, message: 'File not uploaded' });
     const asset = await saveAssetFromFile(req.file);
-    return res.json({ success: 1, image_url: `/api/v1/assets/${asset._id}` });
+    return res.json({ success: 1, image_url: `https://api.praveenproperties.com/api/v1/assets/${asset._id}` });
 });
 
 app.post('/api/v1/uploadhospital', uploadAsset.single('hospital'), async (req, res) => {
     if (!req.file) return res.status(400).json({ success: 0, message: 'File not uploaded' });
     const asset = await saveAssetFromFile(req.file);
-    return res.json({ success: 1, image_url: `/api/v1/assets/${asset._id}` });
+    return res.json({ success: 1, image_url: `https://api.praveenproperties.com/api/v1/assets/${asset._id}` });
 });
 
 
