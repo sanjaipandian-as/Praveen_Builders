@@ -16,7 +16,10 @@ app.use(cookieParser());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+    origin: true, // Automatically reflect the request origin
+    credentials: true // Required for cookies, authorization headers with HTTPS
+}));
 
 const auth = require('./routes/auth');
 
