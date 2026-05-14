@@ -62,16 +62,16 @@ export default function Header() {
 
               <Nav.Link href="/ContactPage" className="nav-link ">Contact Us</Nav.Link>
 
-              <div className="d-flex align-items-center mx-3 ">
+              <div className="d-flex align-items-center mt-2 mt-lg-0 mb-2 mb-lg-0">
                 {isAuthenticated ? (
                   <Dropdown className="d-inline">
-                    <Dropdown.Toggle variant="default text-black" style={{paddingRight:'2rem'}}>
+                    <Dropdown.Toggle variant="default text-black" className="d-flex align-items-center" style={{ border: 'none', background: 'transparent' }}>
                       <figure className="avatar avatar-nav me-2 mb-0">
                         <Image width="40px" src={user.avatar ?? '/images/default_avatar.png'} roundedCircle />
                       </figure>
                       <span>{user.name}</span>
                     </Dropdown.Toggle>
-                    <Dropdown.Menu>
+                    <Dropdown.Menu className="text-center text-lg-start">
                       {user.role === 'admin' && (
                         <Dropdown.Item onClick={() => navigate('/admin/listproduct')} className="text-dark">
                           Dashboard

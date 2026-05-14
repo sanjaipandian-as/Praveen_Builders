@@ -98,7 +98,7 @@ const LocationCard = ({ name, image, amenities }) => {
           </ul>
         </div>
       </div>
-      <style jsx>{`
+      <style>{`
 .location-card {
     perspective: 1000px;
     cursor: pointer;
@@ -305,7 +305,7 @@ const Locations = () => {
           <LocationCard key={index} {...location} />
         ))}
       </div>
-      <style jsx>{`
+      <style>{`
         .locations {
           margin-top: 120px;
           text-align: center;

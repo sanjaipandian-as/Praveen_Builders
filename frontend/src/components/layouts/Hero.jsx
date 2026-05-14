@@ -112,7 +112,7 @@ const Hero = () => {
         </form>
 
       </div>
-      <style jsx>{`
+      <style>{`
 
        
         .changing-words {

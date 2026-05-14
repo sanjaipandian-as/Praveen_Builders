@@ -3,7 +3,11 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import './completed.css';
 
 import upcoming from '../../../assest/Headers/complete.jpeg';
-const apiurl = process.env.REACT_APP_API_URL;
+const apiurl = (() => {
+  const raw = (process.env.REACT_APP_API_URL || '').trim();
+  if (!raw) return '/';
+  return raw.endsWith('/') ? raw : `${raw}/`;
+})();
 const Completed = () => {
   const [completedproject,setCompletedProject] = useState([]);
 

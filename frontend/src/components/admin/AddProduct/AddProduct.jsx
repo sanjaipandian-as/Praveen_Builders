@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import './AddProduct.css';
 import Sidebar from '../Sidebar/Sidebar';
 import { MdOutlineCloudUpload } from "react-icons/md";
-const apiurl = process.env.REACT_APP_API_URL;
+const apiurl = (() => {
+  const raw = (process.env.REACT_APP_API_URL || '').trim();
+  if (!raw) return '/';
+  return raw.endsWith('/') ? raw : `${raw}/`;
+})();
 
 const AddProduct = () => {
   const [image, setImage] = useState(null); 

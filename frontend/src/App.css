@@ -645,6 +645,10 @@ ul.CTAs a {
   .search {
     width: 20px !important;
   }
+  .navbars{
+    position: relative;
+    left: 0px;
+  }
   .company-name{
     font-family:'Inknut Antiqua';
     font-size: 18px;

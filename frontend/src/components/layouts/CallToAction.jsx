@@ -48,7 +48,7 @@ const CallToAction = () => {
           <Nav.Link href="/ContactPage" className="nav-link mx-2" style={{color:'white'}}>Contact Us</Nav.Link>
         </button>
       </div>
-      <style jsx>{`
+      <style>{`
         .cta {
           position: relative;
           border-radius: 50px;

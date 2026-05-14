@@ -2,6 +2,9 @@ const app = require('./app');
 const path = require('path');
 const connectDatabase = require('./config/database');
 
+if (!process.env.JWT_SECRET) {
+    console.warn('⚠️  JWT_SECRET is not set. Set it in backend/config/config.env and restart the server.');
+}
 
 connectDatabase();
 

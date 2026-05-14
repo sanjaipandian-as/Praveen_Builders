@@ -3,10 +3,16 @@ import './ListProduct.css';
 import { MdDeleteForever } from "react-icons/md";
 import Sidebar from '../Sidebar/Sidebar';
 import { MdOutlineCloudUpload } from "react-icons/md";
-const apiurl = process.env.REACT_APP_API_URL;
+const apiurl = (() => {
+  const raw = (process.env.REACT_APP_API_URL || '').trim();
+  if (!raw) return '/';
+  return raw.endsWith('/') ? raw : `${raw}/`;
+})();
 
 const ListProduct = () => {
   const [allProducts, setAllProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 5;
   const [productDetails, setProductDetails] = useState(null); // State to hold the product being edited
   const [image, setImage] = useState(null); // For storing the uploaded image
   const [image1, setImage1] = useState(null);// Single image file
@@ -317,6 +323,13 @@ const ListProduct = () => {
     }
   };
 
+  // Pagination logic
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = allProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="admin">
       <Sidebar />
@@ -343,7 +356,7 @@ const ListProduct = () => {
         </div>
         <div className="listproduct-allproducts">
           <hr />
-          {allProducts.map((product) => (
+          {currentProducts.map((product) => (
             <div key={product._id} className="listproduct-format-main listproduct-format">
               <img src={product.image} alt={product.name} className="listproduct-product-icon" />
               <p>{product.name}</p>
@@ -371,6 +384,29 @@ const ListProduct = () => {
           ))}
           <hr />
         </div>
+
+        {/* Pagination Controls */}
+        {allProducts.length > productsPerPage && (
+          <div className="d-flex justify-content-center mt-3" style={{ gap: '10px', marginBottom: '20px' }}>
+            {Array.from({ length: Math.ceil(allProducts.length / productsPerPage) }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => paginate(i + 1)}
+                style={{
+                  padding: '5px 15px',
+                  cursor: 'pointer',
+                  border: '1px solid #fa9c23',
+                  backgroundColor: currentPage === i + 1 ? '#fa9c23' : '#fff',
+                  color: currentPage === i + 1 ? '#fff' : '#fa9c23',
+                  borderRadius: '5px',
+                  fontWeight: 'bold'
+                }}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
+        )}
 
         {isModalOpen && productDetails && (
           <div className="modal">

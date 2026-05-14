@@ -59,7 +59,7 @@ function App() {
     <Router>
       <div className="App">
         <HelmetProvider>
-            <Header/>
+          <Header/>
             <div className='container-fluid'>
               <ToastContainer theme='dark' />
               <Routes>
@@ -84,16 +84,16 @@ function App() {
                   <Route path='/myprofile/update/password' element={<ProtectedRoute><UpdatePassword/></ProtectedRoute>} />
                   <Route path='/password/forgot' element={<ForgotPassword/>} />
                   <Route path='/password/reset/:token' element={<ResetPassword/>} />
+
+                  {/* Admin Routes */}
+                  <Route path='/admin/users' element={<ProtectedRoute isAdmin={true}><UserList/></ProtectedRoute>} />
+                  <Route path='/admin/addproject' element={<ProtectedRoute isAdmin={true}><Addproduct/></ProtectedRoute>} />
+                  <Route path='/admin/listproduct' element={<ProtectedRoute isAdmin={true}><Listproduct/></ProtectedRoute>} />
+                  <Route path='/admin/user/:id' element={<ProtectedRoute isAdmin={true}><UpdateUser/></ProtectedRoute>} />
+
+                  <Route path='/product/:id' element={<ProductDetail/>} />
               </Routes>
             </div>
-            {/* Admin Routes */}
-            <Routes>
-              <Route path='/admin/users' element={<ProtectedRoute isAdmin={true}><UserList/></ProtectedRoute>} />
-              <Route path='/admin/addproject' element={<ProtectedRoute isAdmin={true}><Addproduct/></ProtectedRoute>} />
-              <Route path='/admin/listproduct' element={<ProtectedRoute isAdmin={true}><Listproduct/></ProtectedRoute>} />
-              <Route path='/admin/user/:id' element={<ProtectedRoute isAdmin={true}><UpdateUser/></ProtectedRoute>} />
-              <Route path='/product/:id' element={<ProductDetail/>} />
-            </Routes>
             <WhatsAppButton />
             <Footer/>
         </HelmetProvider>

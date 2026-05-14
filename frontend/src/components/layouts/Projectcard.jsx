@@ -2,7 +2,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ongoing from '../assest/Headers/ongoings.jpeg'
-const apiurl = process.env.REACT_APP_API_URL;
+const apiurl = (() => {
+  const raw = (process.env.REACT_APP_API_URL || '').trim();
+  if (!raw) return '/';
+  return raw.endsWith('/') ? raw : `${raw}/`;
+})();
 const ProjectCard = ({ id, name, city, price,  land, imageUrl, isVisible, index }) => {
 
 
@@ -152,7 +156,7 @@ overflow:hidden;
 <br /> <br />
 
 
-<style jsx>{`
+<style>{`
     .projects-section {
       padding: 40px 20px;
       text-align: center;
@@ -288,7 +292,7 @@ overflow:hidden;
         height: 150px;
       }
         
-  `}</style>
+`}</style>
 </section>
 </div>
       <br /> 

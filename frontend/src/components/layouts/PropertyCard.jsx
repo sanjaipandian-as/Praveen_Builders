@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-const apiurl = process.env.REACT_APP_API_URL;
+const apiurl = (() => {
+  const raw = (process.env.REACT_APP_API_URL || '').trim();
+  if (!raw) return '/';
+  return raw.endsWith('/') ? raw : `${raw}/`;
+})();
 
 const ProjectCard = ({ id, name, city, price, land, imageUrl, isVisible, index }) => {
   return (
