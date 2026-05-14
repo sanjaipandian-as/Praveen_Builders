@@ -471,10 +471,10 @@ app.get('/api/v1/allproducts', async (req, res) => {
 
 // Recently Added Products Endpoint
 app.get('/api/v1/recentlyadded', async (req, res) => {
-    let products = await Product.find({ category: "Ongoing Project" });
-    let recentlyadded = products.slice(0).slice(-6);
+    // Fetch the 6 most recent projects by sorting descending on _id
+    let products = await Product.find({}).sort({ _id: -1 }).limit(6);
     console.log("Recently Added Fetched");
-    res.send(recentlyadded);
+    res.send(products);
 });
 
 // Ongoing Project Products Endpoint
