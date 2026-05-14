@@ -67,12 +67,12 @@ export default function Header() {
                   <Dropdown className="d-inline">
                     <Dropdown.Toggle variant="default text-black" className="d-flex align-items-center" style={{ border: 'none', background: 'transparent' }}>
                       <figure className="avatar avatar-nav me-2 mb-0">
-                        <Image width="40px" src={user.avatar ?? '/images/default_avatar.png'} roundedCircle />
+                        <Image width="40px" src={user?.avatar ?? '/images/default_avatar.png'} roundedCircle />
                       </figure>
-                      <span>{user.name}</span>
+                      <span>{user?.name}</span>
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="text-center text-lg-start">
-                      {user.role === 'admin' && (
+                      {user?.role === 'admin' && (
                         <Dropdown.Item onClick={() => navigate('/admin/listproduct')} className="text-dark">
                           Dashboard
                         </Dropdown.Item>
