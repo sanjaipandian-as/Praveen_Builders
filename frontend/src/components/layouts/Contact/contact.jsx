@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { Form, Button, Row, Col, Container, Tooltip, OverlayTrigger } from 'react-bootstrap';
-import emailjs from 'emailjs-com';
 import './contact.css';
 import bg from '../../assest/call.png';
 import { IoIosMail,IoMdCall } from "react-icons/io";
@@ -21,28 +20,17 @@ const ContactPage = () => {
       return;
     }
 
-    setLoading(true);
+    const formData = new FormData(formCurrent);
+    const name = formData.get('from_name');
+    const email = formData.get('from_email');
+    const message = formData.get('message');
 
-    emailjs
-      .sendForm(
-        'service_46v32jd',  // Your EmailJS service ID
-        'template_8di1t2q',  // Your EmailJS template ID
-        formCurrent,         // Use the form reference
-        'GxkxldD2uF4kfjuCU'  // Your EmailJS public key
-      )
-      .then(
-        (response) => {
-          console.log('Email sent successfully!', response);
-          alert('Your message has been sent successfully!');
-          formCurrent.reset(); // Reset the form after successful submission
-          setValidated(false); // Reset validation state
-        },
-        (error) => {
-          console.error('Email sending failed:', error);
-          alert('There was an issue sending your message. Please try again later.');
-        }
-      )
-      .finally(() => setLoading(false)); // Stop loading
+    const whatsappMessage = `New Contact Form Submission:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+    const whatsappUrl = `https://wa.me/918220158988?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    window.open(whatsappUrl, '_blank');
+    formCurrent.reset();
+    setValidated(false);
   };
 
   const renderTooltip = (props) => (
