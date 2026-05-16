@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react';
-import emailjs from 'emailjs-com';
 
 const Hero = () => {
   
@@ -40,24 +39,17 @@ const Hero = () => {
   }, [letterIndex, isDeleting, currentWordIndex, words]);
 
 
-  // mail
   const sendEmail = (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
+    const city = formData.get('city');
+    const propertyType = formData.get('propertyType');
+    const priceRange = formData.get('priceRange');
 
-    emailjs.sendForm(
-      'service_46v32jd',  // Replace with your actual service ID
-      'template_4f8edyl', // Replace with your actual template ID
-      e.target,
-      'GxkxldD2uF4kfjuCU'      // Replace with your actual user ID
-    )
-    .then((result) => {
-      console.log('Email sent successfully:', result.text);
-      alert('Form submitted successfully!');
-    }, (error) => {
-      console.error('Error sending email:', error.text);
-      alert('Failed to submit form.');
-    });
-
+    const whatsappMessage = `Hero Form Inquiry:\nCity: ${city || 'Not specified'}\nProperty Type: ${propertyType || 'Not specified'}\nPrice Range: ${priceRange || 'Not specified'}`;
+    const whatsappUrl = `https://wa.me/918220158988?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    window.open(whatsappUrl, '_blank');
     e.target.reset(); // Optional: reset the form after submission
   };
 
