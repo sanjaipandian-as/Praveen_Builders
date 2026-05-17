@@ -47,7 +47,7 @@ const Hero = () => {
     const priceRange = formData.get('priceRange');
 
     const whatsappMessage = `Hero Form Inquiry:\nCity: ${city || 'Not specified'}\nProperty Type: ${propertyType || 'Not specified'}\nPrice Range: ${priceRange || 'Not specified'}`;
-    const whatsappUrl = `https://wa.me/918220158988?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = `https://wa.me/919884961853?text=${encodeURIComponent(whatsappMessage)}`;
     
     window.open(whatsappUrl, '_blank');
     e.target.reset(); // Optional: reset the form after submission

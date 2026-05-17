@@ -26,7 +26,7 @@ const ContactPage = () => {
     const message = formData.get('message');
 
     const whatsappMessage = `New Contact Form Submission:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
-    const whatsappUrl = `https://wa.me/918220158988?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = `https://wa.me/919884961853?text=${encodeURIComponent(whatsappMessage)}`;
     
     window.open(whatsappUrl, '_blank');
     formCurrent.reset();
@@ -60,7 +60,7 @@ const ContactPage = () => {
               <div className="contact-info">
                 <div className="contact-item">
                   <h3><IoMdCall  size={35} color="#FF6600" /> CALL US</h3>
-                  <p>99402 01853 / 89390 54111</p>
+                  <p>98849 61853</p>
                 </div>
                 <div className="contact-item">
                   <h3>
